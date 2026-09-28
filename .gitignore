@@ -1,0 +1,39 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+
+# 环境变量（敏感信息，.env.example 不受影响）
+.env
+
+# 运行时数据（内容忽略，仅保留目录占位文件）
+**/upload/*
+!**/upload/.gitkeep
+**/excel/*
+!**/excel/.gitkeep
+**/logs/*
+!**/logs/.gitkeep
+
+# 部署临时目录
+admin-vue-deploy/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# 系统
+Thumbs.db
+.DS_Store
+
+# 压缩包（体积大，不要提交）
+*.tar.gz
+
+# 文档：只上传仓库主页 README
+*.md
+!README.md

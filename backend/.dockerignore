@@ -1,0 +1,19 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 敏感信息与运行时数据
+.env
+upload/
+excel/
+logs/
+temp_*
+
+# IDE / 系统
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pymysql
+pyjwt
+bcrypt
+python-multipart
+python-dotenv
+pandas
+openpyxl
