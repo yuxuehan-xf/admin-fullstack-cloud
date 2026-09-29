@@ -41,7 +41,7 @@
 
         <el-form-item>
           <el-button
-            type="primary"
+            type="danger"
             native-type="submit"
             :loading="loading"
             size="large"
@@ -53,7 +53,7 @@
       </el-form>
 
       <div class="login-footer">
-        <span>默认账号: admin / 123456</span>
+        <!-- <span>默认账号: admin / 123456</span> -->
       </div>
     </div>
   </div>
