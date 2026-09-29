@@ -22,6 +22,8 @@ services:
   fastapi-backend:
     build: ./backend
     container_name: fastapi-admin
+    env_file:
+      - ./backend/.env
     ports:
       - "8000:8000"
     volumes:
