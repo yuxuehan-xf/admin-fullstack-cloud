@@ -4,11 +4,11 @@
       <div class="login-header">
         <div class="logo">
           <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
-            <rect width="48" height="48" rx="10" fill="#409eff"/>
+            <rect width="48" height="48" rx="10" fill="hsl(310, 100%, 63%)"/>
             <path d="M14 24L22 32L34 18" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h2 class="title">后台管理系统</h2>
+        <h2 class="title">后台管理系统-夯歌</h2>
         <p class="subtitle">欢迎回来，请登录您的账号</p>
       </div>
 
@@ -22,7 +22,7 @@
         <el-form-item prop="username">
           <el-input
             v-model="form.username"
-            placeholder="请输入账号"
+            placeholder="请输入账号啊"
             :prefix-icon="UserIcon"
             size="large"
           />
@@ -32,7 +32,7 @@
           <el-input
             v-model="form.password"
             type="password"
-            placeholder="请输入密码"
+            placeholder="请输入密码啊"
             :prefix-icon="LockIcon"
             show-password
             size="large"
@@ -120,7 +120,7 @@ const login = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, hsl(210, 100%, 60%) 0%, hsl(310, 100%, 63%) 100%);
 }
 
 .login-card {
