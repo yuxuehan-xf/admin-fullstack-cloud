@@ -10,11 +10,23 @@ jobs:
     env:
       # 部署目录：虚拟机实际用户为 saber，课程文档里的 ubuntu 需替换
       APP_DIR: /home/saber/admin-fullstack-cloud
+      # 虚拟机远端已改为 SSH，显式指定密钥与免指纹确认，避免自启服务的 HOME 差异
+      GIT_SSH_COMMAND: ssh -i /home/saber/.ssh/id_ed25519 -o StrictHostKeyChecking=no
     steps:
       - name: 1. 拉取仓库最新代码
         run: |
-          cd $APP_DIR
-          git fetch origin main
+          cd "$APP_DIR"
+          # 国内网络对 GitHub 存在间歇性 RST，单次 fetch 易失败，故重试 5 次
+          ok=0
+          for i in 1 2 3 4 5; do
+            if git fetch origin main; then ok=1; break; fi
+            echo "第 $i 次 git fetch 失败，5 秒后重试..."
+            sleep 5
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::git fetch 连续 5 次失败，请检查虚拟机到 GitHub 的网络连通性"
+            exit 1
+          fi
           git reset --hard origin/main
           echo "=== 当前部署版本 ==="
           git log -1 --oneline
