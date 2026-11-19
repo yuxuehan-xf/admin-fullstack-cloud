@@ -7,27 +7,30 @@ jobs:
   deploy:
     runs-on: [self-hosted, local-vm]
     timeout-minutes: 8
+    env:
+      # 部署目录：虚拟机实际用户为 saber，课程文档里的 ubuntu 需替换
+      APP_DIR: /home/saber/admin-fullstack-cloud
     steps:
       - name: 1. 拉取仓库最新代码
         run: |
-          cd /home/ubuntu/admin-fullstack-cloud
+          cd $APP_DIR
           git fetch origin main
           git reset --hard origin/main
           echo "=== 当前部署版本 ==="
           git log -1 --oneline
       - name: 2. 检查后端 .env 是否存在
         run: |
-          test -f /home/ubuntu/admin-fullstack-cloud/backend/.env \
+          test -f $APP_DIR/backend/.env \
             || { echo "缺少 backend/.env，请按课程文档第三大章 3.2.1 创建后再部署"; exit 1; }
           echo ".env 已存在"
       - name: 3. 校验编排文件语法
         run: |
-          cd /home/ubuntu/admin-fullstack-cloud
+          cd $APP_DIR
           docker compose -f docker-compose-all.yml config > /dev/null
           echo "compose 文件语法正确"
       - name: 4. 重建并启动全栈服务
         run: |
-          cd /home/ubuntu/admin-fullstack-cloud
+          cd $APP_DIR
           docker compose -f docker-compose-all.yml up -d --build
       - name: 5. 初始化测试数据（幂等，失败不中断）
         run: |
